@@ -25,33 +25,47 @@
         padding: 8rem 0 4rem;
         color: #ecfefe;
       }
-      .article-meta {
-        font-size: 0.9rem;
-        color: var(--secondary);
-      }
-      .related-article {
-        transition: transform 0.3s;
-        border: 1px solid var(--primary);
-      }
-      .related-article:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      }
-      .code-block {
+      .theory-card {
         background: var(--primary);
-        border-left: 4px solid var(--accent);
         padding: 1.5rem;
-        position: relative;
+        border-radius: 10px;
+        border: 2px solid var(--accent);
+        transition: transform 0.3s;
       }
-      .breadcrumb {
-        background-color: var(--primary);
-        padding: 1rem;
-        border-radius: 8px;
+      .theory-card:hover {
+        transform: translateY(-5px);
+      }
+      .step-card {
+        border-left: 4px solid var(--accent);
+        margin: 2rem 0;
+        padding-left: 1.5rem;
+      }
+      .step-number {
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        background: var(--accent);
+        color: white;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 35px;
+        margin-right: 1rem;
+      }
+      .implementation-list li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+      .implementation-list li:before {
+        content: "▹";
+        position: absolute;
+        left: 0;
+        color: var(--accent);
       }
     </style>
   </head>
   <body>
-    <!-- Navbar (Sama dengan Landing Page) -->
+    <!-- Navbar -->
     <nav
       class="navbar navbar-expand-lg navbar-dark fixed-top"
       style="background-color: var(--secondary)"
@@ -90,12 +104,8 @@
       <div class="container">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-              <a href="index1.html">Beranda</a>
-            </li>
-            <li class="breadcrumb-item">
-              <a href="index1.html#blog">Blog</a>
-            </li>
+            <li class="breadcrumb-item"><a href="index1.html">Beranda</a></li>
+            <li class="breadcrumb-item"><a href="index1.html#blog">Blog</a></li>
             <li class="breadcrumb-item active" aria-current="page">
               Praktikum Pekan 6 - CRUD PHP OOP
             </li>
@@ -119,37 +129,809 @@
         <!-- Artikel -->
         <div class="col-lg-8">
           <article class="blog-content">
+            <!-- Teori OOP -->
             <section class="mb-5">
-              <h3 class="section-title">Pendahuluan</h3>
-              <p>
-                Aplikasi CRUD (Create, Read, Update, Delete) merupakan dasar
-                dalam membangun sistem informasi. Praktikum ini bertujuan
-                mengimplementasikan konsep OOP dalam PHP menggunakan database
-                MySQL untuk mengelola data mahasiswa.
-              </p>
+              <h3 class="section-title">Konsep OOP dalam Implementasi CRUD</h3>
+              <div class="row g-4">
+                <div class="col-md-6">
+                  <div class="theory-card">
+                    <i class="fas fa-cube fa-2x mb-3"></i>
+                    <h5>Class & Object</h5>
+                    <p>
+                      Class sebagai blueprint untuk membuat object Mahasiswa dan
+                      Database
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="theory-card">
+                    <i class="fas fa-shield-alt fa-2x mb-3"></i>
+                    <h5>Encapsulation</h5>
+                    <p>
+                      Menyembunyikan detail implementasi database dengan access
+                      modifier private
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="theory-card">
+                    <i class="fas fa-project-diagram fa-2x mb-3"></i>
+                    <h5>Inheritance</h5>
+                    <p>
+                      Class Mahasiswa mewarisi koneksi database dari class
+                      Database
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="theory-card">
+                    <i class="fas fa-cogs fa-2x mb-3"></i>
+                    <h5>Polymorphism</h5>
+                    <p>
+                      Method read() dapat menerima parameter berbeda untuk
+                      fungsi berbeda
+                    </p>
+                  </div>
+                </div>
+              </div>
             </section>
 
+            <!-- Langkah Implementasi -->
             <section class="mb-5">
-              <h3 class="section-title">Alat dan Teknologi</h3>
-              <ul>
-                <li>
-                  <strong>XAMPP</strong> – Menyediakan server lokal (Apache &
-                  MySQL)
-                </li>
-                <li>
-                  <strong>Visual Studio Code</strong> – Code editor ringan dan
-                  fleksibel
-                </li>
-                <li>
-                  <strong>Git & GitHub</strong> – Kontrol versi dan publikasi
-                  kode
-                </li>
-                <li>
-                  <strong>Bootstrap 5</strong> – Untuk antarmuka responsif
-                </li>
-              </ul>
+              <h3 class="section-title">Langkah Implementasi sesuai Modul</h3>
+
+              <div class="step-card">
+                <div class="step-header">
+                  <span class="step-number">A</span>
+                  <h5>Persiapan</h5>
+                </div>
+                <div class="step-content">
+                  <ol>
+                    <li>
+                      Buat folder <code>crud</code> dalam <code>htdocs</code>
+                    </li>
+                    <li>
+                      Buat struktur folder:
+                      <pre><code>crud/
+├── assets/
+│   ├── css/
+│   └── js/
+├── config/
+├── function/
+├── model/
+├── create.php
+├── edit.php
+└── index.php</code></pre>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+
+              <!-- B. Persiapan Database -->
+              <div class="step-card">
+                <div class="step-header">
+                  <span class="step-number">B</span>
+                  <h5>Membuat Database dan Tabel</h5>
+                </div>
+                <div class="step-content">
+                  <pre><code>CREATE DATABASE pemrograman_web;
+USE pemrograman_web;
+
+CREATE TABLE mahasiswa (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  nim VARCHAR(16) NOT NULL,
+  nama VARCHAR(128) NOT NULL,
+  jurusan VARCHAR(128) NOT NULL
+);</code></pre>
+                </div>
+              </div>
+
+              <div class="step-card">
+                <div class="step-header">
+                  <span class="step-number">C</span>
+                  <h5>Koneksi Database</h5>
+                </div>
+                <div class="step-content">
+                  <p>File <code>config/Database.php</code>:</p>
+                  <pre><code>&lt;?php
+class Database {
+    private $host = "localhost";
+    private $db_name = "pemrograman_web";
+    private $username = "root";
+    private $password = "";
+    public $conn;
+
+    public function getConnection() {
+        $this->conn = new mysqli(
+            $this->host,
+            $this->username,
+            $this->password,
+            $this->db_name
+        );
+        if ($this->conn->connect_error) {
+            die("Connection failed: " . $this->conn->connect_error);
+        }
+        return $this->conn;
+    }
+}</code></pre>
+                </div>
+              </div>
+
+              <div class="step-card">
+                <div class="step-header">
+                  <span class="step-number">D</span>
+                  <h5>File Config</h5>
+                </div>
+                <div class="step-content">
+                  <p>File <code>config/Config.php</code>:</p>
+                  <pre><code>&lt;?php
+define('BASE_URL', 'http://localhost/crud/');</code></pre>
+                </div>
+              </div>
+
+              <div class="step-card">
+                <div class="step-header">
+                  <span class="step-number">E</span>
+                  <h5>Sistem Alert</h5>
+                </div>
+                <div class="step-content">
+                  <p>File <code>function/Alert.php</code>:</p>
+                  <pre><code>&lt;?php
+function alert($msg, $sts) {
+    $class = $sts == 1 ? "alert-success" : "alert-danger";
+    echo "&lt;div class='alert $class'&gt;$msg&lt;/div&gt;";
+}</code></pre>
+                </div>
+              </div>
+
+              <div class="step-card">
+                <div class="step-header">
+                  <span class="step-number">F</span>
+                  <h5>Class Mahasiswa</h5>
+                </div>
+                <div class="step-content">
+                  <p>File <code>model/Mahasiswa.php</code>:</p>
+                  <pre><code>&lt;?php
+session_start();
+class Mahasiswa {
+    private $conn;
+    private $table_name = "mahasiswa";
+
+    public $id;
+    public $nim;
+    public $nama;
+    public $jurusan;
+
+    public function __construct($db) {
+        $this->conn = $db;
+    }
+}</code></pre>
+                </div>
+                <!-- C. CRUD Operations -->
+                <div class="step-card">
+                  <div class="step-header">
+                    <h5>Implementasi CRUD dalam Class Mahasiswa</h5>
+                  </div>
+                  <div class="step-content">
+                    <div class="accordion" id="crudAccordion">
+                      <!-- CREATE -->
+                      <div class="accordion-item">
+                        <h2 class="accordion-header">
+                          <button
+                            class="accordion-button"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#createCollapse"
+                          >
+                            Create Data
+                          </button>
+                        </h2>
+                        <div
+                          id="createCollapse"
+                          class="accordion-collapse collapse show"
+                        >
+                          <div class="accordion-body">
+                            <pre><code>public function create() {
+    $query = "INSERT INTO ".$this->table_name." 
+            SET nim=?, nama=?, jurusan=?";
+    $stmt = $this->conn->prepare($query);
+    $stmt->bind_param("sss", 
+        $this->nim, 
+        $this->nama, 
+        $this->jurusan
+    );
+    
+    if($stmt->execute()) {
+        $_SESSION['flash_message'] = "Data berhasil disimpan!";
+        header("Location: index.php?msg=1");
+    } else {
+        $_SESSION['flash_message'] = "Data gagal disimpan!";
+        header("Location: index.php?msg=0");
+    }
+}</code></pre>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- READ -->
+                      <div class="accordion-item">
+                        <h2 class="accordion-header">
+                          <button
+                            class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#readCollapse"
+                          >
+                            Read Data
+                          </button>
+                        </h2>
+                        <div
+                          id="readCollapse"
+                          class="accordion-collapse collapse"
+                        >
+                          <div class="accordion-body">
+                            <pre><code>public function read($id = "") {
+    if($id == "") {
+        return $this->conn->query("SELECT * FROM ".$this->table_name);
+    } else {
+        $query = "SELECT * FROM ".$this->table_name." WHERE id=?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        return $stmt->get_result();
+    }
+}</code></pre>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- UPDATE -->
+                      <div class="accordion-item">
+                        <h2 class="accordion-header">
+                          <button
+                            class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#updateCollapse"
+                          >
+                            Update Data
+                          </button>
+                        </h2>
+                        <div
+                          id="updateCollapse"
+                          class="accordion-collapse collapse"
+                        >
+                          <div class="accordion-body">
+                            <pre><code>public function update() {
+    $query = "UPDATE ".$this->table_name." 
+            SET nim=?, nama=?, jurusan=? 
+            WHERE id=?";
+    $stmt = $this->conn->prepare($query);
+    $stmt->bind_param("sssi", 
+        $this->nim, 
+        $this->nama, 
+        $this->jurusan, 
+        $this->id
+    );
+    
+    if($stmt->execute()) {
+        $_SESSION['flash_message'] = "Data berhasil diupdate!";
+        header("Location: index.php?msg=1");
+    } else {
+        $_SESSION['flash_message'] = "Data gagal diupdate!";
+        header("Location: index.php?msg=0");
+    }
+}</code></pre>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- DELETE -->
+                      <div class="accordion-item">
+                        <h2 class="accordion-header">
+                          <button
+                            class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#deleteCollapse"
+                          >
+                            Delete Data
+                          </button>
+                        </h2>
+                        <div
+                          id="deleteCollapse"
+                          class="accordion-collapse collapse"
+                        >
+                          <div class="accordion-body">
+                            <pre><code>public function delete() {
+    $query = "DELETE FROM ".$this->table_name." WHERE id=?";
+    $stmt = $this->conn->prepare($query);
+    $stmt->bind_param("i", $this->id);
+    
+    if($stmt->execute()) {
+        $_SESSION['flash_message'] = "Data berhasil dihapus!";
+        header("Location: index.php?msg=1");
+    } else {
+        $_SESSION['flash_message'] = "Data gagal dihapus!";
+        header("Location: index.php?msg=0");
+    }
+}</code></pre>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="step-card">
+                <div class="step-header">
+                  <span class="step-number">G</span>
+                  <h5>Fungsi Mahasiswa</h5>
+                </div>
+                <div class="step-content">
+                  <p>File <code>function/Mahasiswa.php</code>:</p>
+                  <pre><code>&lt;?php
+// function/Mahasiswa.php
+include_once '../config/Database.php';
+include '../config/Config.php';
+include_once '../model/Mahasiswa.php';
+
+$database = new Database();
+$db = $database->getConnection();
+$mahasiswa = new Mahasiswa($db);
+
+if(isset($_GET['action'])) {
+    switch($_GET['action']) {
+        case 'create':
+            $mahasiswa->nim = $_POST['nim'];
+            $mahasiswa->nama = $_POST['nama'];
+            $mahasiswa->jurusan = $_POST['jurusan'];
+            $mahasiswa->create();
+            break;
+        
+        case 'update':
+            $mahasiswa->id = $_POST['id'];
+            $mahasiswa->nim = $_POST['nim'];
+            $mahasiswa->nama = $_POST['nama'];
+            $mahasiswa->jurusan = $_POST['jurusan'];
+            $mahasiswa->update();
+            break;
+        
+        case 'delete':
+            $mahasiswa->id = $_GET['id'];
+            $mahasiswa->delete();
+            break;
+    }
+}</code></pre>
+                </div>
+              </div>
+
+              <div class="step-card">
+                <div class="step-header">
+                  <span class="step-number">H</span>
+                  <h5>Tampilan View</h5>
+                </div>
+                <div class="step-content">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#indexCollapse"
+                      >
+                        Index.html
+                      </button>
+                    </h2>
+                    <div id="indexCollapse" class="accordion-collapse collapse">
+                      <div class="accordion-body">
+                        <p>File <code>index.php</code> (extract):</p>
+                        <pre><code>&lt;?php
+    include &#39;function/Alert.php&#39;;
+    include_once &#39;./config/Database.php&#39;;
+    include_once &#39;./model/Mahasiswa.php&#39;;
+    
+    $database = new Database();
+    $db = $database-&gt;getConnection();
+    $mahasiswa = new Mahasiswa($db);
+    $result = $mahasiswa-&gt;read();
+?&gt; 
+
+&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+    &lt;title&gt;Student Management System&lt;/title&gt;
+    &lt;link href=&quot;assets/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;link href=&quot;https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;link href=&quot;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+    
+    &lt;style&gt;
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --card-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+        
+        body {
+            background: #f8f9fa;
+            font-family: &#39;Poppins&#39;, sans-serif;
+        }
+        
+        .main-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            margin-top: 2rem;
+            padding: 2rem;
+            transform: translateY(-50px);
+            opacity: 0;
+            animation: slideUp 0.8s forwards;
+        }
+        
+        @keyframes slideUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .table-hover-effect tbody tr {
+            transition: all 0.3s ease;
+        }
+        
+        .table-hover-effect tbody tr:hover {
+            transform: translateX(10px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .gradient-btn {
+            background-image: var(--primary-gradient);
+            border: none;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .gradient-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(118,75,162,0.4);
+        }
+        
+        .action-btn {
+            padding: 0.3rem 0.8rem;
+            border-radius: 10px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&quot;bg-light&quot;&gt;
+    &lt;div class=&quot;container-fluid py-5&quot;&gt;
+        &lt;div class=&quot;col-lg-10 mx-auto&quot;&gt;
+            &lt;div class=&quot;main-card animate__animated animate__fadeInUp&quot;&gt;
+                &lt;div class=&quot;d-flex justify-content-between align-items-center mb-4&quot;&gt;
+                    &lt;h2 class=&quot;text-primary fw-bold&quot;&gt;&lt;i class=&quot;fas fa-user-graduate me-2&quot;&gt;&lt;/i&gt;Student Management&lt;/h2&gt;
+                    &lt;a href=&quot;create.php&quot; class=&quot;gradient-btn btn btn-sm&quot;&gt;
+                        &lt;i class=&quot;fas fa-plus-circle me-2&quot;&gt;&lt;/i&gt;Tambah Mahasiswa
+                    &lt;/a&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Alert Section --&gt;
+                &lt;?php if(isset($_SESSION[&#39;flash_message&#39;])): ?&gt;
+                &lt;div class=&quot;alert alert-dismissible fade show animate__animated animate__slideInDown 
+                    &lt;?= ($_GET[&#39;msg&#39;] == &#39;1&#39;) ? &#39;alert-success&#39; : &#39;alert-danger&#39; ?&gt;&quot; 
+                    role=&quot;alert&quot; style=&quot;position: fixed; top: 20px; right: 20px; z-index: 1000;&quot;&gt;
+                    &lt;?= $_SESSION[&#39;flash_message&#39;] ?&gt;
+                    &lt;button type=&quot;button&quot; class=&quot;btn-close&quot; data-bs-dismiss=&quot;alert&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
+                &lt;/div&gt;
+                &lt;?php unset($_SESSION[&#39;flash_message&#39;]); endif; ?&gt;
+
+                &lt;div class=&quot;table-responsive&quot;&gt;
+                    &lt;table class=&quot;table table-hover table-hover-effect align-middle&quot;&gt;
+                        &lt;thead class=&quot;table-light&quot;&gt;
+                            &lt;tr&gt;
+                                &lt;th&gt;#&lt;/th&gt;
+                                &lt;th&gt;NIM&lt;/th&gt;
+                                &lt;th&gt;Nama Lengkap&lt;/th&gt;
+                                &lt;th&gt;Jurusan&lt;/th&gt;
+                                &lt;th class=&quot;text-center&quot;&gt;Aksi&lt;/th&gt;
+                            &lt;/tr&gt;
+                        &lt;/thead&gt;
+                        &lt;tbody&gt;
+                            &lt;?php $no=1; while ($row = $result-&gt;fetch_assoc()): ?&gt;
+                            &lt;tr class=&quot;animate__animated animate__fadeIn&quot;&gt;
+                                &lt;td class=&quot;fw-bold&quot;&gt;&lt;?= $no++ ?&gt;&lt;/td&gt;
+                                &lt;td&gt;&lt;?= $row[&#39;nim&#39;] ?&gt;&lt;/td&gt;
+                                &lt;td&gt;&lt;?= $row[&#39;nama&#39;] ?&gt;&lt;/td&gt;
+                                &lt;td&gt;
+                                    &lt;span class=&quot;badge bg-primary bg-gradient&quot;&gt;
+                                        &lt;?= $row[&#39;jurusan&#39;] ?&gt;
+                                    &lt;/span&gt;
+                                &lt;/td&gt;
+                                &lt;td class=&quot;text-center&quot;&gt;
+                                    &lt;a href=&quot;edit.php?id=&lt;?= $row[&#39;id&#39;] ?&gt;&quot; 
+                                       class=&quot;btn btn-success btn-sm action-btn me-1&quot;&gt;
+                                        &lt;i class=&quot;fas fa-edit me-1&quot;&gt;&lt;/i&gt;Edit
+                                    &lt;/a&gt;
+                                    &lt;a href=&quot;function/Mahasiswa.php?action=delete&amp;id=&lt;?= $row[&#39;id&#39;] ?&gt;&quot; 
+                                       class=&quot;btn btn-danger btn-sm action-btn&quot; 
+                                       onclick=&quot;return confirm(&#39;Hapus data &lt;?= $row[&#39;nama&#39;] ?&gt;?&#39;)&quot;&gt;
+                                        &lt;i class=&quot;fas fa-trash-alt me-1&quot;&gt;&lt;/i&gt;Hapus
+                                    &lt;/a&gt;
+                                &lt;/td&gt;
+                            &lt;/tr&gt;
+                            &lt;?php endwhile; ?&gt;
+                        &lt;/tbody&gt;
+                    &lt;/table&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script src=&quot;assets/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+        // Auto-hide alert after 3 seconds
+        window.setTimeout(function() {
+            document.querySelector(&#39;.alert&#39;).classList.add(&#39;animate__fadeOutUp&#39;);
+            setTimeout(function() {
+                document.querySelector(&#39;.alert&#39;).remove();
+            }, 500);
+        }, 3000);
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#createCollapse"
+                      >
+                        create.html
+                      </button>
+                    </h2>
+                    <div
+                      id="createCollapse"
+                      class="accordion-collapse collapse"
+                    >
+                      <div class="accordion-body">
+                        <p>File <code>create.php</code> (extract):</p>
+                        <pre><code>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+    &lt;title&gt;Tambah Mahasiswa&lt;/title&gt;
+    &lt;link href="assets/css/bootstrap.min.css" rel="stylesheet"&gt;
+    &lt;link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet"&gt;
+    &lt;link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"&gt;
+    
+    &lt;style&gt;
+        .form-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            margin: 2rem auto;
+            padding: 2.5rem;
+            max-width: 600px;
+            transform: translateY(50px);
+            opacity: 0;
+            animation: formEntrance 0.6s forwards;
+        }
+
+        @keyframes formEntrance {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class="bg-light"&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="row"&gt;
+            &lt;div class="form-card animate__animated animate__fadeInUp"&gt;
+                &lt;div class="d-flex justify-content-between align-items-center mb-4"&gt;
+                    &lt;h3 class="text-primary"&gt;&lt;i class="fas fa-user-plus me-2"&gt;&lt;/i&gt;Tambah Mahasiswa Baru&lt;/h3&gt;
+                    &lt;a href="index.php" class="btn btn-outline-secondary btn-sm"&gt;
+                        &lt;i class="fas fa-arrow-left me-1"&gt;&lt;/i&gt;Kembali
+                    &lt;/a&gt;
+                &lt;/div&gt;
+
+                &lt;form action="function/Mahasiswa.php?action=create" method="post"&gt;
+                    &lt;div class="mb-4"&gt;
+                        &lt;label class="form-label"&gt;NIM&lt;/label&gt;
+                        &lt;input type="text" class="form-control" name="nim" required 
+                               placeholder="Masukkan NIM mahasiswa"&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class="mb-4"&gt;
+                        &lt;label class="form-label"&gt;Nama Lengkap&lt;/label&gt;
+                        &lt;input type="text" class="form-control" name="nama" required
+                               placeholder="Masukkan nama lengkap"&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class="mb-4"&gt;
+                        &lt;label class="form-label"&gt;Jurusan&lt;/label&gt;
+                        &lt;input type="text" class="form-control" name="jurusan" required
+                               placeholder="Masukkan nama jurusan"&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class="d-grid"&gt;
+                        &lt;button type="submit" class="btn btn-primary gradient-btn py-2"&gt;
+                            &lt;i class="fas fa-save me-2"&gt;&lt;/i&gt;Simpan Data
+                        &lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/form&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script src="assets/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#editCollapse"
+                      >
+                        edit.html
+                      </button>
+                    </h2>
+                    <div id="editCollapse" class="accordion-collapse collapse">
+                      <div class="accordion-body">
+                        <p>File <code>edit.php</code> (extract):</p>
+                        <pre><code>&lt;?php 
+    include_once './config/Database.php'; 
+    include_once './model/Mahasiswa.php'; 
+    
+    $database = new Database(); 
+    $db = $database->getConnection(); 
+    $mahasiswa = new Mahasiswa($db); 
+    
+    if(isset($_GET['id'])) { 
+        $result = $mahasiswa-&gt;read($_GET['id'])-&gt;fetch_assoc(); 
+    } 
+?&gt; 
+
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+    &lt;title&gt;Edit Mahasiswa&lt;/title&gt;
+    &lt;link href="assets/css/bootstrap.min.css" rel="stylesheet"&gt;
+    &lt;link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet"&gt;
+    &lt;link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"&gt;
+    
+    &lt;style&gt;
+        .form-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-top: 3rem;
+            animation: formEntrance 0.5s ease;
+        }
+        
+        @keyframes formEntrance {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .form-label {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-control {
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 0.75rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52,152,219,0.1);
+        }
+        
+        .data-preview {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class="bg-light"&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="row"&gt;
+            &lt;div class="form-card animate__animated animate__fadeInUp"&gt;
+                &lt;div class="d-flex justify-content-between align-items-center mb-4"&gt;
+                    &lt;h3 class="text-primary"&gt;&lt;i class="fas fa-user-edit me-2"&gt;&lt;/i&gt;Edit Data Mahasiswa&lt;/h3&gt;
+                    &lt;a href="index.php" class="btn btn-outline-secondary btn-sm"&gt;
+                        &lt;i class="fas fa-arrow-left me-1"&gt;&lt;/i&gt;Kembali
+                    &lt;/a&gt;
+                &lt;/div&gt;
+
+                &lt;form action="function/Mahasiswa.php?action=update" method="post"&gt;
+                    &lt;input type="hidden" name="id" value="&lt;?= htmlspecialchars($result['id']) ?&gt;"&gt;
+                    
+                    &lt;div class="data-preview"&gt;
+                        &lt;small class="text-muted"&gt;ID Registrasi:&lt;/small&gt;
+                        &lt;div class="fw-bold"&gt;&lt;?= htmlspecialchars($result['id']) ?&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class="mb-4"&gt;
+                        &lt;label class="form-label"&gt;NIM&lt;/label&gt;
+                        &lt;input type="text" class="form-control" name="nim" required
+                               value="&lt;?= htmlspecialchars($result['nim']) ?&gt;"&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class="mb-4"&gt;
+                        &lt;label class="form-label"&gt;Nama Lengkap&lt;/label&gt;
+                        &lt;input type="text" class="form-control" name="nama" required
+                               value="&lt;?= htmlspecialchars($result['nama']) ?&gt;"&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class="mb-4"&gt;
+                        &lt;label class="form-label"&gt;Jurusan&lt;/label&gt;
+                        &lt;input type="text" class="form-control" name="jurusan" required
+                               value="&lt;?= htmlspecialchars($result['jurusan']) ?&gt;"&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class="d-grid gap-2"&gt;
+                        &lt;button type="submit" class="btn btn-success gradient-btn py-2"&gt;
+                            &lt;i class="fas fa-sync-alt me-2"&gt;&lt;/i&gt;Perbarui Data
+                        &lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/form&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script src="assets/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </section>
 
+            <!-- Bagian lainnya -->
             <section class="mb-5">
               <h3 class="section-title">Struktur Proyek</h3>
               <pre><code>crud/
@@ -166,90 +948,19 @@
 │   └── Mahasiswa.php
 ├── create.php
 ├── edit.php
-└── index.php
-</code></pre>
+└── index.php</code></pre>
             </section>
 
-            <section class="mb-5">
-              <h3 class="section-title">Langkah-Langkah Implementasi</h3>
+            <section>
               <p>
-                1. Buat database
-                <span class="highlight">pemrograman_web</span> dan tabel
-                <span class="highlight">mahasiswa</span> dengan kolom id, nim,
-                nama, jurusan.
+                Link Repository:
+                <a
+                  href="https://github.com/Alone1011/submission-MIFE/tree/main/submission-week2-weather-app"
+                  >https://github.com/Alone1011/submission-MIFE/tree/main/submission-week2-weather-app</a
+                >
               </p>
-              <p>
-                2. Konfigurasikan koneksi database pada file
-                <span class="highlight">Database.php</span>:
-              </p>
-              <pre><code>class Database {
-  private $host = "localhost";
-  private $db_name = "pemrograman_web";
-  private $username = "root";
-  private $password = "";
-  public $conn;
-
-  public function getConnection() {
-    $this->conn = new mysqli($this->host, $this->username, $this->password, $this->db_name);
-    return $this->conn;
-  }
-}
-</code></pre>
-              <p>
-                3. Tambahkan konstanta
-                <span class="highlight">BASE_URL</span> di file
-                <span class="highlight">Config.php</span>.
-              </p>
-              <p>
-                4. Buat file <span class="highlight">Alert.php</span> untuk
-                menampilkan notifikasi operasi data.
-              </p>
-              <p>
-                5. Bangun class <span class="highlight">Mahasiswa</span> di
-                folder <code>model/</code> dengan method: <code>create()</code>,
-                <code>read()</code>, <code>update()</code>, dan
-                <code>delete()</code>.
-              </p>
-              <p>
-                6. Gunakan
-                <span class="highlight">function/Mahasiswa.php</span> sebagai
-                controller penghubung antar model dan view.
-              </p>
-              <p>
-                7. Buat tampilan di <span class="highlight">index.php</span>,
-                <span class="highlight">create.php</span>, dan
-                <span class="highlight">edit.php</span>.
-              </p>
+              <p>Link Website : a</p>
             </section>
-
-            <section class="mb-5">
-              <h3 class="section-title">Fitur Tambahan</h3>
-              <ul>
-                <li>Validasi sederhana pada form input</li>
-                <li>Struktur file modular dan terorganisir</li>
-                <li>
-                  Penggunaan <code>$_SESSION</code> untuk pesan sukses atau
-                  gagal
-                </li>
-                <li>Desain responsif menggunakan Bootstrap</li>
-              </ul>
-            </section>
-
-            <!-- Navigasi Artikel -->
-            <div class="article-navigation mt-5 pt-4 border-top">
-              <div class="row">
-                <div class="col-6">
-                  <a href="#" class="btn btn-outline-accent w-100">
-                    <i class="fas fa-arrow-left me-2"></i>Artikel Sebelumnya
-                  </a>
-                </div>
-                <div class="col-6">
-                  <a href="#" class="btn btn-accent w-100">
-                    Artikel Selanjutnya<i class="fas fa-arrow-right ms-2"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
           </article>
         </div>
 
@@ -295,12 +1006,21 @@
                     class="list-group-item list-group-item-action related-article"
                   >
                     <div class="d-flex justify-content-between">
-                      <span>Membuat Aplikasi To-Do List dengan React</span>
+                      <span>Membuat REST API dengan Laravel</span>
                       <i class="fas fa-chevron-right"></i>
                     </div>
-                    <small class="text-muted">15 Juni 2024</small>
+                    <small class="text-muted">1 Juli 2024</small>
                   </a>
-                  <!-- Tambahkan artikel lainnya -->
+                  <a
+                    href="#"
+                    class="list-group-item list-group-item-action related-article"
+                  >
+                    <div class="d-flex justify-content-between">
+                      <span>Implementasi JWT Authentication</span>
+                      <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <small class="text-muted">28 Juni 2024</small>
+                  </a>
                 </div>
               </div>
             </div>
@@ -309,7 +1029,7 @@
       </div>
     </main>
 
-    <!-- Footer (Sama dengan Landing Page) -->
+    <!-- Footer -->
     <footer class="bg-dark text-light py-4">
       <div class="container text-center">
         <div class="mb-4">
