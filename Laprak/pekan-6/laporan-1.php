@@ -1,3 +1,17 @@
+<?php
+// Di bagian atas file
+include_once './config/Database.php';
+include_once './model/Komentar.php';
+
+$database = new Database();
+$db = $database->getConnection(); 
+
+$komentar = new Komentar($db);
+$komentar->id_artikel = 1; // ID artikel yang sesuai
+$result_komentar = $komentar->read();
+$total_komentar = $result_komentar->num_rows;
+?>
+
 <!DOCTYPE html>
 <html lang="id">
   <head>
@@ -14,7 +28,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="Assets/styles.css" />
+    <link rel="stylesheet" href="../../Assets/laporan-styles.css" />
     <style>
       .blog-header {
         background: linear-gradient(
@@ -64,14 +78,17 @@
       }
     </style>
   </head>
-  <body>
+  <body class="laporan-page">
     <!-- Navbar -->
     <nav
       class="navbar navbar-expand-lg navbar-dark fixed-top"
       style="background-color: var(--secondary)"
     >
       <div class="container">
-        <a class="navbar-brand" href="index1.html" style="font-weight: 700"
+        <a
+          class="navbar-brand"
+          href="../pekan-6/laporan-1.php"
+          style="color: #006970; font-weight: 700"
           >PORTFOLIO</a
         >
         <button
@@ -85,12 +102,12 @@
         <div class="collapse navbar-collapse" id="blogNav">
           <ul class="navbar-nav ms-auto" style="font-size: 18px">
             <li class="nav-item">
-              <a class="nav-link" href="index1.html#home"
+              <a class="nav-link" href="../../index.html#home"
                 ><i class="fas fa-home me-1"></i>Beranda</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index1.html#blog"
+              <a class="nav-link" href="../../index.html#blog"
                 ><i class="fas fa-arrow-left me-1"></i>Kembali ke Blog</a
               >
             </li>
@@ -104,8 +121,8 @@
       <div class="container">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index1.html">Beranda</a></li>
-            <li class="breadcrumb-item"><a href="index1.html#blog">Blog</a></li>
+            <li class="breadcrumb-item"><a href="../../index.html">Beranda</a></li>
+            <li class="breadcrumb-item"><a href="../../index.html#blog">Blog</a></li>
             <li class="breadcrumb-item active" aria-current="page">
               Praktikum Pekan 6 - CRUD PHP OOP
             </li>
@@ -116,7 +133,7 @@
         </h1>
         <div class="article-meta mt-3">
           <span class="me-3"
-            ><i class="fas fa-calendar-alt me-1"></i>25 Juni 2024</span
+            ><i class="fas fa-calendar-alt me-1"></i>14 Mei 2025</span
           >
           <span><i class="fas fa-clock me-1"></i>8 min read</span>
         </div>
@@ -124,10 +141,10 @@
     </header>
 
     <!-- Konten Utama -->
-    <main class="container py-5">
-      <div class="row g-5">
+    <main class="container py-4 py-lg-5">
+      <div class="row g-5 g-lg-5">
         <!-- Artikel -->
-        <div class="col-lg-8">
+        <div class="col-12 col-lg-8">
           <article class="blog-content">
             <!-- Teori OOP -->
             <section class="mb-5">
@@ -180,6 +197,7 @@
             <section class="mb-5">
               <h3 class="section-title">Langkah Implementasi sesuai Modul</h3>
 
+              <!-- A. Persiapan  -->
               <div class="step-card">
                 <div class="step-header">
                   <span class="step-number">A</span>
@@ -226,6 +244,7 @@ CREATE TABLE mahasiswa (
                 </div>
               </div>
 
+              <!-- C. Koneksi Database -->
               <div class="step-card">
                 <div class="step-header">
                   <span class="step-number">C</span>
@@ -241,22 +260,21 @@ class Database {
     private $password = "";
     public $conn;
 
-    public function getConnection() {
-        $this->conn = new mysqli(
-            $this->host,
-            $this->username,
-            $this->password,
-            $this->db_name
-        );
-        if ($this->conn->connect_error) {
-            die("Connection failed: " . $this->conn->connect_error);
+    public function getConnection(){
+        $this->conn = null;
+        try {
+            $this->conn = new mysqli($this->host, $this->username, $this->password, $this->db_name);
+        } catch (Exception $e) {
+            echo "Connection error: " . $e->getMessage();
         }
         return $this->conn;
     }
-}</code></pre>
+}
+?&gt;</code></pre>
                 </div>
               </div>
 
+              <!-- D. File Config -->
               <div class="step-card">
                 <div class="step-header">
                   <span class="step-number">D</span>
@@ -269,6 +287,7 @@ define('BASE_URL', 'http://localhost/crud/');</code></pre>
                 </div>
               </div>
 
+              <!-- E. Sistem Alert -->
               <div class="step-card">
                 <div class="step-header">
                   <span class="step-number">E</span>
@@ -277,13 +296,23 @@ define('BASE_URL', 'http://localhost/crud/');</code></pre>
                 <div class="step-content">
                   <p>File <code>function/Alert.php</code>:</p>
                   <pre><code>&lt;?php
-function alert($msg, $sts) {
-    $class = $sts == 1 ? "alert-success" : "alert-danger";
-    echo "&lt;div class='alert $class'&gt;$msg&lt;/div&gt;";
-}</code></pre>
+    function alert($msg, $sts) {
+        if ($sts == 1) {
+            $tipe = 'success';
+        } else {
+            $tipe = 'danger';
+        }
+        echo '
+            &lt;div class="alert alert-'.$tipe.'" role="alert"&gt;
+            '.$msg.'
+            &lt;/div&gt;
+        ';
+    }
+?&gt;</code></pre>
                 </div>
               </div>
 
+              <!-- F. Class Mahasiswa -->
               <div class="step-card">
                 <div class="step-header">
                   <span class="step-number">F</span>
@@ -464,6 +493,7 @@ class Mahasiswa {
                 </div>
               </div>
 
+              <!-- G. Fungsi Mahasiswa -->
               <div class="step-card">
                 <div class="step-header">
                   <span class="step-number">G</span>
@@ -507,12 +537,14 @@ if(isset($_GET['action'])) {
                 </div>
               </div>
 
+              <!-- H. Tampilan view -->
               <div class="step-card">
                 <div class="step-header">
                   <span class="step-number">H</span>
                   <h5>Tampilan View</h5>
                 </div>
                 <div class="step-content">
+                  <!-- index.html -->
                   <div class="accordion-item">
                     <h2 class="accordion-header">
                       <button
@@ -679,10 +711,19 @@ if(isset($_GET['action'])) {
     &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
+                        <img
+                          src="../../Assets/images/laprak/Pekan_6/pekan6-1.png"
+                          alt="Gambar Dashboard"
+                          width="650"
+                          class="img-fluid"
+                          loading="lazy"
+                        />
+                        <p><i>Gambar tampilan dashboard</i></p>
                       </div>
                     </div>
                   </div>
 
+                  <!-- create.html -->
                   <div class="accordion-item">
                     <h2 class="accordion-header">
                       <button
@@ -792,10 +833,19 @@ if(isset($_GET['action'])) {
     &lt;script src="assets/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
+                        <img
+                          src="../../Assets/images/laprak/Pekan_6/pekan6-3.png"
+                          alt="Gambar Create"
+                          width="650"
+                          class="img-fluid"
+                          loading="lazy"
+                        />
+                        <p><i>Gambar tampilan create</i></p>
                       </div>
                     </div>
                   </div>
 
+                  <!-- edit.html -->
                   <div class="accordion-item">
                     <h2 class="accordion-header">
                       <button
@@ -924,6 +974,14 @@ if(isset($_GET['action'])) {
     &lt;script src="assets/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
+                        <img
+                          src="../../Assets/images/laprak/Pekan_6/pekan6-4.png"
+                          alt="Gambar Dashboard"
+                          width="650"
+                          class="img-fluid"
+                          loading="lazy"
+                        />
+                        <p><i>Gambar tampilan dashboard</i></p>
                       </div>
                     </div>
                   </div>
@@ -955,39 +1013,95 @@ if(isset($_GET['action'])) {
               <p>
                 Link Repository:
                 <a
-                  href="https://github.com/Alone1011/submission-MIFE/tree/main/submission-week2-weather-app"
-                  >https://github.com/Alone1011/submission-MIFE/tree/main/submission-week2-weather-app</a
+                  href="https://github.com/Alone1011/2311532011_RifkiYuliandra_PWeb/tree/Laprak"
+                  >https://github.com/Alone1011/2311532011_RifkiYuliandra_PWeb/tree/Laprak</a
                 >
               </p>
-              <p>Link Website : a</p>
+              <p>
+                Link Website:
+                <a href="../../pweb_6/index.php"> Website</a>
+              </p>
+            </section>
+
+            <section class="mb-5">
+              <h3 class="section-title">Komentar (<?= $total_komentar ?>)</h3>
+
+              <!-- Form Komentar -->
+              <div class="card mb-4">
+                  <div class="card-body">
+                      <h5 class="card-title">Tinggalkan Komentar</h5>
+                      <form action="function/Komentar.php" method="POST">
+                          <input type="hidden" name="redirect_url" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
+                          <input type="hidden" name="id_artikel" value="1"> 
+                          
+                          <div class="mb-3">
+                              <label class="form-label">Nama</label>
+                              <input type="text" name="nama" class="form-control" required>
+                          </div>
+
+                          <div class="mb-3">
+                              <label class="form-label">Komentar</label>
+                              <textarea name="isi_komentar" class="form-control" rows="3" required></textarea>
+                          </div>
+
+                          <button type="submit" class="btn btn-primary">Kirim Komentar</button>
+                      </form>
+                  </div>
+              </div>
+
+              <!-- Daftar Komentar -->
+              <div class="komentar-list">
+                  <?php
+                  $komentar->id_artikel = 1; // Ganti dengan ID artikel dinamis
+                  $result = $komentar->read();
+                  
+                  while($row = $result->fetch_assoc()):
+                  ?>
+                  <div class="card mb-3">
+                      <div class="card-body">
+                          <div class="d-flex justify-content-between align-items-center mb-2">
+                              <h6 class="card-subtitle mb-2 text-muted"><?= htmlspecialchars($row['nama']) ?></h6>
+                              <small class="text-muted"><?= date('d M Y H:i', strtotime($row['tanggal'])) ?></small>
+                          </div>
+                          <p class="card-text"><?= nl2br(htmlspecialchars($row['isi_komentar'])) ?></p>
+                      </div>
+                  </div>
+                  <?php endwhile; ?>
+              </div>
             </section>
           </article>
         </div>
 
         <!-- Sidebar -->
-        <aside class="col-lg-4">
+        <aside class="col-12 col-lg-4">
           <div class="sticky-top" style="top: 100px">
             <!-- Penulis -->
             <div class="card mb-4 border-0 shadow-sm">
               <div class="card-body text-center">
                 <img
-                  src="Assets/images/profil.png"
+                  src="../../Assets/images/profil.png"
                   alt="Rifki Yuliandra"
                   class="rounded-circle mb-3"
                   width="120"
                 />
                 <h5 class="mb-2">Rifki Yuliandra</h5>
                 <p class="text-muted small">
-                  Mahasiswa Teknik Informatika - Universitas Andalas
+                  Mahasiswa Informatika - Universitas Andalas
                 </p>
                 <div class="social-links">
-                  <a href="#" class="text-decoration-none me-2"
+                  <a
+                    href="https://github.com/Alone1011"
+                    class="text-decoration-none me-2"
                     ><i class="fab fa-github"></i
                   ></a>
-                  <a href="#" class="text-decoration-none me-2"
+                  <a
+                    href="https://www.linkedin.com/in/rifki-yuliandra-957774287/"
+                    class="text-decoration-none me-2"
                     ><i class="fab fa-linkedin"></i
                   ></a>
-                  <a href="#" class="text-decoration-none"
+                  <a
+                    href="https://www.instagram.com/r_kiylndr_/"
+                    class="text-decoration-none"
                     ><i class="fab fa-instagram"></i
                   ></a>
                 </div>
@@ -1002,24 +1116,24 @@ if(isset($_GET['action'])) {
                 </h5>
                 <div class="list-group">
                   <a
-                    href="#"
+                    href="../pekan-7/laporan-2.php"
                     class="list-group-item list-group-item-action related-article"
                   >
                     <div class="d-flex justify-content-between">
-                      <span>Membuat REST API dengan Laravel</span>
+                      <span>Instalasi dan Konfigurasi Laravel</span>
                       <i class="fas fa-chevron-right"></i>
                     </div>
-                    <small class="text-muted">1 Juli 2024</small>
+                    <small class="text-muted">19 Mei 2025</small>
                   </a>
                   <a
-                    href="#"
+                    href="../pekan-8/laporan-3.php"
                     class="list-group-item list-group-item-action related-article"
                   >
                     <div class="d-flex justify-content-between">
-                      <span>Implementasi JWT Authentication</span>
+                      <span>Pembuatan Halaman Login, Dashboard Menggunakan Framework Laravel - Part 1</span>
                       <i class="fas fa-chevron-right"></i>
                     </div>
-                    <small class="text-muted">28 Juni 2024</small>
+                    <small class="text-muted">27 Mei 2025</small>
                   </a>
                 </div>
               </div>
@@ -1033,13 +1147,15 @@ if(isset($_GET['action'])) {
     <footer class="bg-dark text-light py-4">
       <div class="container text-center">
         <div class="mb-4">
-          <a href="#" class="text-light me-3"
+          <a href="https://github.com/Alone1011" class="text-light me-3"
             ><i class="fab fa-github fa-lg"></i
           ></a>
-          <a href="#" class="text-light me-3"
+          <a
+            href="https://www.linkedin.com/in/rifki-yuliandra-957774287/"
+            class="text-light me-3"
             ><i class="fab fa-linkedin fa-lg"></i
           ></a>
-          <a href="#" class="text-light"
+          <a href="https://www.instagram.com/r_kiylndr_/" class="text-light"
             ><i class="fab fa-instagram fa-lg"></i
           ></a>
         </div>
