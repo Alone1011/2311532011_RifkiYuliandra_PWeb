@@ -1,0 +1,976 @@
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>RY. | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-fixed-dim": "#00e5ee",
+              "on-surface": "#f1f3fc",
+              "inverse-surface": "#f8f9ff",
+              "secondary-fixed-dim": "#46eaed",
+              "surface-container-highest": "#20262f",
+              "surface-bright": "#262c36",
+              secondary: "#5af8fb",
+              "on-error": "#490006",
+              "on-tertiary-fixed-variant": "#296700",
+              "on-primary-fixed": "#004346",
+              "inverse-primary": "#006a6e",
+              "on-surface-variant": "#a8abb3",
+              "on-tertiary-fixed": "#1a4700",
+              "on-secondary-fixed": "#004748",
+              "on-tertiary": "#286500",
+              "on-error-container": "#ffa8a3",
+              "surface-variant": "#20262f",
+              "tertiary-fixed": "#6ffe00",
+              "inverse-on-surface": "#51555c",
+              "error-dim": "#d7383b",
+              "surface-tint": "#a1faff",
+              "surface-container": "#151a21",
+              "on-secondary-container": "#d9ffff",
+              "outline-variant": "#44484f",
+              "secondary-dim": "#46eaed",
+              "on-primary-container": "#00575b",
+              surface: "#0a0e14",
+              "tertiary-container": "#6ffe00",
+              outline: "#72757d",
+              "error-container": "#9f0519",
+              "on-tertiary-container": "#245c00",
+              "secondary-fixed": "#5af8fb",
+              "on-secondary-fixed-variant": "#006668",
+              "primary-dim": "#00e5ee",
+              "tertiary-fixed-dim": "#68ee00",
+              "tertiary-dim": "#68ee00",
+              "surface-container-lowest": "#000000",
+              "primary-fixed": "#00f4fe",
+              "surface-container-low": "#0f141a",
+              "secondary-container": "#00696b",
+              "on-background": "#f1f3fc",
+              error: "#ff716c",
+              tertiary: "#c1ff9b",
+              "primary-container": "#00f4fe",
+              background: "#0a0e14",
+              "on-secondary": "#005b5d",
+              "surface-container-high": "#1b2028",
+              "on-primary-fixed-variant": "#006266",
+              "on-primary": "#006165",
+              "surface-dim": "#0a0e14",
+              primary: "#a1faff",
+            },
+            fontFamily: {
+              headline: ["Plus Jakarta Sans"],
+              body: ["Inter"],
+              label: ["Inter"],
+            },
+            borderRadius: {
+              DEFAULT: "0.125rem",
+              lg: "0.25rem",
+              xl: "0.5rem",
+              full: "0.75rem",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background-color: #0a0e14;
+        color: #f1f3fc;
+        font-family: "Inter", sans-serif;
+      }
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .glass-card {
+        background: rgba(27, 32, 40, 0.6);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+      .hex-bg {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M50 5 L90 25 L90 75 L50 95 L10 75 L10 25 Z' fill='none' stroke='%2300f5ff' stroke-width='0.5' stroke-opacity='0.1'/%3E%3C/svg%3E");
+        background-size: 80px 80px;
+      }
+    </style>
+  </head>
+  <body class="selection:bg-primary/30 selection:text-primary">
+    <!-- TopNavBar -->
+    <nav
+      class="fixed top-0 w-full z-50 bg-slate-950/60 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,245,255,0.05)]"
+    >
+      <div
+        class="max-w-7xl mx-auto flex justify-between items-center px-8 py-6"
+      >
+        <div
+          class="text-2xl font-black tracking-tighter bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent font-headline"
+        >
+          RY.
+        </div>
+        <div class="hidden md:flex items-center gap-8">
+          <a
+            class="text-cyan-400 font-bold border-b-2 border-cyan-400 pb-1 font-headline"
+            href="#projects"
+            >Projects</a
+          >
+          <a
+            class="text-slate-400 font-medium hover:text-cyan-200 transition-colors font-headline"
+            href="#about"
+            >About</a
+          >
+          <a
+            class="text-slate-400 font-medium hover:text-cyan-200 transition-colors font-headline"
+            href="#skills"
+            >Skills</a
+          >
+          <a
+            class="text-slate-400 font-medium hover:text-cyan-200 transition-colors font-headline"
+            href="#blog"
+            >Blog</a
+          >
+          <a
+            class="text-slate-400 font-medium hover:text-cyan-200 transition-colors font-headline"
+            href="#gallery"
+            >Gallery</a
+          >
+        </div>
+        <button
+          class="bg-gradient-to-r from-primary to-secondary px-6 py-2.5 rounded-xl text-on-primary font-bold hover:shadow-[0_0_20px_rgba(161,250,255,0.3)] transition-all duration-300 transform active:scale-95"
+        >
+          Hire Me
+        </button>
+      </div>
+    </nav>
+    <main class="pt-24 overflow-x-hidden">
+      <!-- Hero Section: Redesigned Two-Column Layout -->
+      <section
+        class="min-h-[90vh] flex items-center px-8 md:px-16 lg:px-24 relative overflow-hidden"
+      >
+        <div class="absolute inset-0 overflow-hidden -z-10">
+          <div
+            class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 blur-[120px] rounded-full"
+          ></div>
+          <div
+            class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 blur-[120px] rounded-full"
+          ></div>
+        </div>
+        <div
+          class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center w-full"
+        >
+          <!-- Left Column -->
+          <div class="flex flex-col items-start text-left space-y-6 z-10">
+            <p
+              class="text-primary font-bold tracking-[0.2em] uppercase text-sm font-label flex items-center gap-3"
+            >
+              <span class="w-10 h-[1px] bg-primary"></span>
+              Hello, Welcome. I am
+            </p>
+            <h1
+              class="text-6xl md:text-7xl lg:text-8xl font-black font-headline tracking-tighter text-on-surface leading-[0.9]"
+            >
+              <span
+                class="bg-gradient-to-r from-primary-fixed-dim to-secondary-fixed-dim bg-clip-text text-transparent block"
+                >Rifki</span
+              >
+              <span
+                class="bg-gradient-to-r from-primary-fixed-dim to-secondary-fixed-dim bg-clip-text text-transparent block"
+                >Yuliandra</span
+              >
+            </h1>
+            <p
+              class="text-lg md:text-xl text-on-surface-variant font-body leading-relaxed max-w-xl"
+            >
+              Informatics Student | Enthusiast in AI, Data Science &amp;
+              Fullstack Development
+            </p>
+            <div
+              class="flex flex-col sm:flex-row items-center gap-4 pt-4 w-full sm:w-auto"
+            >
+              <a
+                class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-primary to-secondary rounded-xl text-on-primary font-bold text-base hover:shadow-[0_0_30px_rgba(161,250,255,0.4)] transition-all duration-500 text-center"
+                href="#projects"
+              >
+                View Projects
+              </a>
+              <button
+                class="w-full sm:w-auto px-8 py-3.5 border border-outline-variant rounded-xl text-primary font-bold text-base hover:bg-primary/5 transition-all text-center"
+              >
+                Download CV
+              </button>
+            </div>
+            <!-- Social Media Icons -->
+            <div class="flex gap-6 pt-6 items-center">
+              <a
+                class="group relative flex items-center justify-center"
+                href="#"
+              >
+                <div
+                  class="absolute inset-0 bg-primary/20 blur-md rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                ></div>
+                <img
+                  alt="LinkedIn"
+                  class="w-5 h-5 opacity-50 group-hover:opacity-100 group-hover:invert-0 invert transition-all"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBU9pB3sM89Y8XbM4x6XbikNhhep5zsHMVnwXSXJO4Im7PAIz0cTUpGP05XklTXE23rFVf5hDMP3M6iR7IEb6jvJKvGTgFe9MsrKYnaaDU4lYP4l37w5kpAAYuhsNn069zynvwEK7OGRm_4FYAPnbtxHtrNyiCwbj1qqGccwKcL0AvYARM8-KGjsrHxL7aZ0wOBddRNahXbEZJozxbk_1bdG7RgXr1kRnxHGiOQRv2Nxzvd1eSkVoLQ1ol-ooJXlIkqFA9vXQ75S_Oi"
+                />
+              </a>
+              <a
+                class="group relative flex items-center justify-center"
+                href="#"
+              >
+                <div
+                  class="absolute inset-0 bg-primary/20 blur-md rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                ></div>
+                <img
+                  alt="GitHub"
+                  class="w-5 h-5 opacity-50 group-hover:opacity-100 group-hover:invert-0 invert transition-all"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTeewLOfGbWMudm2pEApcOiXtc4xabYm9QxpRDMMYjdGqxRme5DfSauMkILb8AzBveBuZTzAGxPkLQfutefu7c0DWfWQavjDhk3btrapYwd8aHq_qHr3c5Otfb0rAjhrk5OjsUni1JBHgbBeKh0fBXE_2_aw-wa5ddKGoQdg4DkTuUXFVfhk50oVAeoXr7iYrWzef_fih5MHod61QSL_PwDcMraC38p3OwifIZkshiqdbkOiZBAzfUeG8CuPlY5tCz67OlEwQpw6HS"
+                />
+              </a>
+              <a
+                class="group relative flex items-center justify-center"
+                href="#"
+              >
+                <div
+                  class="absolute inset-0 bg-primary/20 blur-md rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                ></div>
+                <img
+                  alt="Instagram"
+                  class="w-5 h-5 opacity-50 group-hover:opacity-100 group-hover:invert-0 invert transition-all"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHyhbaodBLb6HfMejVHSuM14Kq1OCsK_7HIudFyL9fkNokTq7UK_6bVhRkVrGgnTR5dmQLxcLjuPDS-TkYdFpzy9jIc-KY6BY3OMsQ9cxNPZYX-igVlu7Xj3fq0_-sm7lQUvLZUFrWLSHdal7q70ImX7oC8MdTux-Qz7XvZ2y7gyqvhjckCR2vqjRgdlH7UPG3OWTzFj4BoSJLD88qF4ZQ1gQMGtjHOWbwbIILK8uXAguriqop0taLODbp-pnznzTBZEdDOxpYmQwU"
+                />
+              </a>
+            </div>
+          </div>
+          <!-- Right Column -->
+          <div
+            class="relative flex justify-center items-center h-full min-h-[400px] md:min-h-[600px]"
+          >
+            <!-- Background Accents -->
+            <div
+              class="absolute inset-0 hex-bg opacity-30 mask-gradient-to-b"
+            ></div>
+            <div
+              class="absolute top-1/4 right-1/4 w-32 h-32 border border-primary/20 rounded-full animate-pulse"
+            ></div>
+            <div
+              class="absolute bottom-1/3 left-1/4 w-48 h-48 border border-secondary/10 rounded-xl rotate-45 animate-[spin_20s_linear_infinite]"
+            ></div>
+            <!-- Portrait Container -->
+            <div
+              class="relative z-10 w-full h-full flex items-center justify-center"
+            >
+              <div
+                class="w-full h-full max-w-md aspect-[4/5] bg-gradient-to-t from-surface to-transparent rounded-b-full overflow-hidden relative group"
+              >
+                <img
+                  alt="Rifki Yuliandra Portrait"
+                  class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgzxTAxOgedAA9a4PaMe6JBM1qtj3r896ThF4LYf61sjE_YxylV9Uc1FgLpYqn-wOUiUDuvdiU6gLNtnz7cvwctmXkBu8uL20JKxaJBsRZK83n4-v-vF-YLBaeYzxb5ILNV9KGqXnRVtXmjI138O1ggv6Jwu3_tYcy-zSzTYvlRljxiAG_niUIlGNlhLvocfGXxzozu5AeN9NrefJVc1V4cb41OODJotN_1Fy5V8ET4mbTHdj3vwx_650S08eBI0uHmfaSoMZK_Ocm"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"
+                ></div>
+              </div>
+              <!-- Tech Accent Icon -->
+              <div
+                class="absolute bottom-10 right-10 md:right-20 bg-surface-container-high/80 backdrop-blur-md p-4 rounded-2xl shadow-2xl border border-primary/20 transform hover:scale-110 transition-transform"
+              >
+                <span
+                  class="material-symbols-outlined text-primary text-3xl"
+                  data-icon="terminal"
+                  >terminal</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-30 hidden md:block"
+        >
+          <span
+            class="material-symbols-outlined text-on-surface-variant"
+            data-icon="keyboard_double_arrow_down"
+            >keyboard_double_arrow_down</span
+          >
+        </div>
+      </section>
+      <!-- About Me Section -->
+      <section class="py-32 bg-surface-container-low px-6" id="about">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+          <div class="space-y-8">
+            <div
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary-container/20 text-secondary text-sm font-bold uppercase tracking-widest font-label"
+            >
+              <span
+                class="w-2 h-2 rounded-full bg-secondary animate-pulse"
+              ></span>
+              Introduction
+            </div>
+            <h2
+              class="text-4xl md:text-5xl font-black font-headline text-on-surface"
+            >
+              Solving complex problems with
+              <span
+                class="text-primary italic underline decoration-secondary/30"
+                >digital precision.</span
+              >
+            </h2>
+            <p class="text-lg text-on-surface-variant font-body leading-loose">
+              As an Informatics student, I bridge the gap between abstract data
+              and functional user experiences. My journey is defined by a
+              relentless curiosity for how technology can automate the mundane
+              and illuminate the complex. From building robust backends in
+              Laravel to crafting intuitive mobile apps with Flutter, I treat
+              every line of code as a brushstroke in a larger digital
+              masterpiece.
+            </p>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div
+              class="aspect-square glass-card rounded-3xl flex flex-col items-center justify-center p-8 border border-outline-variant/10 group hover:border-primary/40 transition-all duration-500"
+            >
+              <div class="text-4xl font-black text-primary mb-2">3+</div>
+              <div class="text-sm font-label text-on-surface-variant">
+                Years Coding
+              </div>
+            </div>
+            <div
+              class="aspect-square glass-card rounded-3xl flex flex-col items-center justify-center p-8 border border-outline-variant/10 group hover:border-primary/40 transition-all duration-500 mt-8"
+            >
+              <div class="text-4xl font-black text-secondary mb-2">20+</div>
+              <div class="text-sm font-label text-on-surface-variant">
+                Projects Done
+              </div>
+            </div>
+            <div
+              class="aspect-square glass-card rounded-3xl flex flex-col items-center justify-center p-8 border border-outline-variant/10 group hover:border-primary/40 transition-all duration-500 -mt-8"
+            >
+              <div class="text-4xl font-black text-tertiary-dim mb-2">5+</div>
+              <div class="text-sm font-label text-on-surface-variant">
+                Core Techs
+              </div>
+            </div>
+            <div
+              class="aspect-square glass-card rounded-3xl flex flex-col items-center justify-center p-8 border border-outline-variant/10 group hover:border-primary/40 transition-all duration-500"
+            >
+              <div class="text-4xl font-black text-on-surface mb-2">99%</div>
+              <div class="text-sm font-label text-on-surface-variant">
+                Efficiency
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Skills Section: Bento Grid -->
+      <section class="py-32 px-6" id="skills">
+        <div class="max-w-7xl mx-auto">
+          <div
+            class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4"
+          >
+            <div>
+              <h2
+                class="text-sm font-label text-primary tracking-[0.3em] uppercase mb-4"
+              >
+                Core Competencies
+              </h2>
+              <h3
+                class="text-4xl md:text-6xl font-black font-headline text-on-surface"
+              >
+                The Tech Stack.
+              </h3>
+            </div>
+            <p class="text-on-surface-variant font-body max-w-sm">
+              Curating specialized solutions through modern frameworks and
+              scientific approaches.
+            </p>
+          </div>
+          <div
+            class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 min-h-[700px]"
+          >
+            <!-- Data & AI -->
+            <div
+              class="md:col-span-2 md:row-span-1 glass-card rounded-[2rem] p-10 flex flex-col justify-between border border-outline-variant/10 hover:border-primary/30 transition-all duration-500 group"
+            >
+              <div class="flex justify-between items-start">
+                <span
+                  class="material-symbols-outlined text-5xl text-primary"
+                  data-icon="neurology"
+                  >neurology</span
+                >
+                <span
+                  class="material-symbols-outlined text-2xl text-on-surface-variant group-hover:text-primary transition-colors"
+                  data-icon="arrow_outward"
+                  >arrow_outward</span
+                >
+              </div>
+              <div>
+                <h4 class="text-3xl font-black font-headline mb-4">
+                  Data &amp; AI
+                </h4>
+                <p class="text-on-surface-variant mb-6">
+                  Unlocking insights with Python, Machine Learning, and
+                  Predictive Analytics.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-bold border border-primary/20"
+                    >Python</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-bold border border-primary/20"
+                    >TensorFlow</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-bold border border-primary/20"
+                    >Scikit-learn</span
+                  >
+                </div>
+              </div>
+            </div>
+            <!-- Web Dev -->
+            <div
+              class="md:col-span-1 md:row-span-2 bg-surface-container-high rounded-[2rem] p-10 flex flex-col justify-between border border-outline-variant/5 hover:scale-[1.02] transition-all duration-500 group overflow-hidden relative"
+            >
+              <div
+                class="absolute -right-12 -top-12 w-48 h-48 bg-secondary/5 blur-[60px] rounded-full"
+              ></div>
+              <div class="relative z-10 flex flex-col h-full">
+                <span
+                  class="material-symbols-outlined text-5xl text-secondary mb-8"
+                  data-icon="web"
+                  >web</span
+                >
+                <h4 class="text-3xl font-black font-headline mb-4 mt-auto">
+                  Web Dev
+                </h4>
+                <p class="text-on-surface-variant mb-8">
+                  Architecting scalable backends and dynamic frontends using
+                  Laravel and modern PHP.
+                </p>
+                <div class="space-y-4">
+                  <div
+                    class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden"
+                  >
+                    <div class="bg-secondary h-full w-[95%]"></div>
+                  </div>
+                  <div
+                    class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden"
+                  >
+                    <div class="bg-secondary h-full w-[88%]"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Mobile -->
+            <div
+              class="md:col-span-1 md:row-span-1 bg-primary-container/10 rounded-[2rem] p-10 border border-primary/20 hover:bg-primary-container/20 transition-all duration-500"
+            >
+              <span
+                class="material-symbols-outlined text-5xl text-primary mb-8"
+                data-icon="smartphone"
+                >smartphone</span
+              >
+              <h4 class="text-2xl font-black font-headline mb-2">Mobile</h4>
+              <p class="text-on-surface-variant text-sm">
+                Building cross-platform excellence with Flutter.
+              </p>
+            </div>
+            <!-- Design -->
+            <div
+              class="md:col-span-2 md:row-span-1 bg-surface-container-highest rounded-[2rem] p-10 flex items-center gap-8 border border-outline-variant/10 group"
+            >
+              <div
+                class="w-1/3 aspect-square bg-surface rounded-2xl flex items-center justify-center border border-outline-variant/20"
+              >
+                <span
+                  class="material-symbols-outlined text-6xl text-on-surface-variant group-hover:text-tertiary-dim transition-colors"
+                  data-icon="ink_pen"
+                  >ink_pen</span
+                >
+              </div>
+              <div class="flex-1">
+                <h4 class="text-3xl font-black font-headline mb-2">Design</h4>
+                <p class="text-on-surface-variant mb-4">
+                  Aesthetic UI/UX systems crafted in Figma with user-centric
+                  focus.
+                </p>
+                <div class="flex gap-4">
+                  <div class="flex -space-x-3">
+                    <div
+                      class="w-8 h-8 rounded-full bg-surface border-2 border-surface-container-highest flex items-center justify-center text-[10px] font-bold"
+                    >
+                      Fi
+                    </div>
+                    <div
+                      class="w-8 h-8 rounded-full bg-surface border-2 border-surface-container-highest flex items-center justify-center text-[10px] font-bold"
+                    >
+                      Ai
+                    </div>
+                    <div
+                      class="w-8 h-8 rounded-full bg-surface border-2 border-surface-container-highest flex items-center justify-center text-[10px] font-bold"
+                    >
+                      Ps
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Projects Showcase -->
+      <section class="py-32 bg-surface-container-lowest px-6" id="projects">
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center mb-20">
+            <h2 class="text-4xl md:text-6xl font-black font-headline mb-6">
+              Selected Works
+            </h2>
+            <div
+              class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"
+            ></div>
+          </div>
+          <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
+            <!-- Project 1 -->
+            <div
+              class="group relative bg-surface-container-high rounded-[2rem] overflow-hidden border border-outline-variant/10 hover:border-primary/40 transition-all duration-700"
+            >
+              <div class="aspect-[16/10] overflow-hidden">
+                <img
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                  data-alt="Modern abstract data visualization dashboard with dark interface, blue glowing charts and neon accents on a sleek computer monitor"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf7t1QfW88ut19JVJFUgv1zHc8tfirROR-YfAQxgNj7YIds-2edpPFY9GX88xJJokXLwbvMRbhpxExBB1t4djlNAZQ2K68ioIKDHgZ0Py_xWqNtEB27VZOySqIp7oGzCm-oTfYvXSKFiuqTLXZPYWBr89OURowmlg2tMjiaUVx1bBX95ZpqrclxH6bcoAM6gKknl9UN08h-y_uQnt2DirGuS8lzfvFFH-oRtZlUj4jcExmNncNVDTapoWsryx4WRm2FljSDWmZM_rm"
+                />
+              </div>
+              <div class="p-8 space-y-4">
+                <div class="flex justify-between items-center">
+                  <h4 class="text-2xl font-black font-headline">
+                    Nova Analytics
+                  </h4>
+                  <a
+                    class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center group-hover:bg-primary group-hover:text-on-primary transition-all duration-500"
+                    href="#"
+                  >
+                    <span
+                      class="material-symbols-outlined text-sm"
+                      data-icon="north_east"
+                      >north_east</span
+                    >
+                  </a>
+                </div>
+                <p
+                  class="text-on-surface-variant font-body line-clamp-2 text-sm"
+                >
+                  Real-time predictive analytics dashboard for e-commerce
+                  platforms using Python and React.
+                </p>
+                <div class="flex flex-wrap gap-2 pt-2">
+                  <span
+                    class="px-3 py-1 rounded-full bg-surface-container-highest text-secondary text-[10px] font-bold uppercase tracking-wider font-label"
+                    >Python</span
+                  >
+                  <span
+                    class="px-3 py-1 rounded-full bg-surface-container-highest text-secondary text-[10px] font-bold uppercase tracking-wider font-label"
+                    >MLOps</span
+                  >
+                  <span
+                    class="px-3 py-1 rounded-full bg-surface-container-highest text-secondary text-[10px] font-bold uppercase tracking-wider font-label"
+                    >D3.js</span
+                  >
+                </div>
+              </div>
+            </div>
+            <!-- Project 2 -->
+            <div
+              class="group relative bg-surface-container-high rounded-[2rem] overflow-hidden border border-outline-variant/10 hover:border-secondary/40 transition-all duration-700"
+            >
+              <div class="aspect-[16/10] overflow-hidden">
+                <img
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                  data-alt="Smartphone showing a sleek mobile app interface with minimal white space, crisp typography, and soft teal buttons against a dark blurred background"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAoJn4CPGTvBiDZVPMjny04Uj436EsmfWB1g2SyHcMbRcKDJlr3C5pcwO2g3zAv2D88fP5kPGbWfMC55CkISWf1NOW1lRbb-vjudApCyvtXscC8mXEIYuxKZNa6g5vdQBkUP32zr2Tvfdl-AuBGi7T1cmQLhoIzc_Au10IRFfqnlgZYrdfGyhNHwWMTcLO9H-ZVAAsA2rg3bwNm6OgStH_WfwNVDJnyxu6Gc3qUy-45v5zmI7BK8zJkeP6w0v_oKoBlrvmwhDAs7mR"
+                />
+              </div>
+              <div class="p-8 space-y-4">
+                <div class="flex justify-between items-center">
+                  <h4 class="text-2xl font-black font-headline">SwiftHealth</h4>
+                  <a
+                    class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center group-hover:bg-secondary group-hover:text-on-secondary transition-all duration-500"
+                    href="#"
+                  >
+                    <span
+                      class="material-symbols-outlined text-sm"
+                      data-icon="north_east"
+                      >north_east</span
+                    >
+                  </a>
+                </div>
+                <p
+                  class="text-on-surface-variant font-body line-clamp-2 text-sm"
+                >
+                  A holistic wellness and medicine tracking application designed
+                  with Flutter for iOS &amp; Android.
+                </p>
+                <div class="flex flex-wrap gap-2 pt-2">
+                  <span
+                    class="px-3 py-1 rounded-full bg-surface-container-highest text-primary text-[10px] font-bold uppercase tracking-wider font-label"
+                    >Flutter</span
+                  >
+                  <span
+                    class="px-3 py-1 rounded-full bg-surface-container-highest text-primary text-[10px] font-bold uppercase tracking-wider font-label"
+                    >Firebase</span
+                  >
+                  <span
+                    class="px-3 py-1 rounded-full bg-surface-container-highest text-primary text-[10px] font-bold uppercase tracking-wider font-label"
+                    >Dart</span
+                  >
+                </div>
+              </div>
+            </div>
+            <!-- Project 3 -->
+            <div
+              class="group relative bg-surface-container-high rounded-[2rem] overflow-hidden border border-outline-variant/10 hover:border-tertiary-dim/40 transition-all duration-700"
+            >
+              <div class="aspect-[16/10] overflow-hidden">
+                <img
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                  data-alt="Visual representation of an AI network with glowing nodes and neural pathways on a dark obsidian-like surface"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtwnsGzUB-EWZX_L56MRFz9u9amD1T_EfJ_icEnXkVHhfnirtAS9H1ye4rGtqZpjap9uJ4uIlL1drmeFfLcwn9ctIIf8zaQWlxzfFU81x38hLYq4o4Pd3WSL1smNcBFwHnq4H7ZRvv0vkHR_FXw7E3h38xv_LFeI3M-DbtrnXOSuth4Y5vI4rmwUWHPW8YidrKE7t7X5AHnODHVcqDcBJHHy7JYPxE9gnU_ui7fCEZjvMTyUytWX2S_XMRaXpz6mkqyihEF2XjX4er"
+                />
+              </div>
+              <div class="p-8 space-y-4">
+                <div class="flex justify-between items-center">
+                  <h4 class="text-2xl font-black font-headline">EcoTrack</h4>
+                  <a
+                    class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center group-hover:bg-tertiary-dim group-hover:text-surface transition-all duration-500"
+                    href="#"
+                  >
+                    <span
+                      class="material-symbols-outlined text-sm"
+                      data-icon="north_east"
+                      >north_east</span
+                    >
+                  </a>
+                </div>
+                <p
+                  class="text-on-surface-variant font-body line-clamp-2 text-sm"
+                >
+                  Carbon footprint monitoring and reduction engine utilizing
+                  TensorFlow for predictive modeling.
+                </p>
+                <div class="flex flex-wrap gap-2 pt-2">
+                  <span
+                    class="px-3 py-1 rounded-full bg-surface-container-highest text-tertiary-dim text-[10px] font-bold uppercase tracking-wider font-label"
+                    >Python</span
+                  >
+                  <span
+                    class="px-3 py-1 rounded-full bg-surface-container-highest text-tertiary-dim text-[10px] font-bold uppercase tracking-wider font-label"
+                    >TensorFlow</span
+                  >
+                  <span
+                    class="px-3 py-1 rounded-full bg-surface-container-highest text-tertiary-dim text-[10px] font-bold uppercase tracking-wider font-label"
+                    >Node.js</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Blog Section -->
+      <section class="py-32 px-6 bg-surface-dim" id="blog">
+        <div class="max-w-7xl mx-auto">
+          <div class="mb-16">
+            <h2 class="text-4xl md:text-5xl font-black font-headline mb-4">
+              Latest Insights
+            </h2>
+            <p class="text-on-surface-variant">
+              Sharing my technical discoveries and creative process.
+            </p>
+          </div>
+          <div class="grid md:grid-cols-3 gap-8">
+            <!-- Post 1 -->
+            <article class="group cursor-pointer">
+              <div
+                class="aspect-[4/3] rounded-3xl overflow-hidden mb-6 bg-surface-container-high border border-outline-variant/10"
+              >
+                <img
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 grayscale hover:grayscale-0"
+                  data-alt="Close up of high quality code displayed on a computer screen with purple and cyan syntax highlighting in a dark room"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvM7AYNBEKbj-paVezERFGOJF32xtjBSqdkfwzfzv3hQGFYO0Sadj9FtoP3TiFq84OsykF98Nhdm40Pp7ZM_AQU-DnNjtKV8VDYDc0Mi5AiVlpvqWotKnanoBnNEBhw07u_kOscm0so7E0sOIiPXhC2GDbVyqOAkdKNsiPRHjJAYKujmuyuAST4nJh0t5Vo4uCdgLfMlD63IRIFLtjG7W-5XU8kkSJd9yDDmwnQc7cu16FocgshwUSYPYpmrfRVs6KpsJg7VYit9S-"
+                />
+              </div>
+              <div class="flex items-center gap-4 mb-3">
+                <span
+                  class="text-xs font-label text-primary uppercase font-bold"
+                  >Tech Noir</span
+                >
+                <span class="text-xs font-label text-on-surface-variant"
+                  >Oct 12, 2024</span
+                >
+              </div>
+              <h4
+                class="text-2xl font-black font-headline group-hover:text-primary transition-colors mb-3 leading-tight"
+              >
+                Implementing Neural Networks from Scratch in Python
+              </h4>
+              <p class="text-on-surface-variant text-sm line-clamp-3">
+                Deep dive into the mathematical foundation of backpropagation
+                and gradient descent...
+              </p>
+            </article>
+            <!-- Post 2 -->
+            <article class="group cursor-pointer">
+              <div
+                class="aspect-[4/3] rounded-3xl overflow-hidden mb-6 bg-surface-container-high border border-outline-variant/10"
+              >
+                <img
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 grayscale hover:grayscale-0"
+                  data-alt="A futuristic workspace with two monitors showing complex programming code, mechanical keyboard with cyan backlighting, and a cup of coffee"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuACZYudD91DJJgR74CfmK7RqVxrESU6L0orriS4g2LmHlFdv-Xj5fkx531FXPZc9OUcA7DFI2fkXCQtQGNPOu9hIteBdf_6faX6DAA6HuGCzwNpE8-gkuxXS54jOHVUmCGbp5mEJGEhlsskTl2bRSnavzyLFs1CQ8ubM5tx0pERL8cMkYdOGMkJEwrlRj6KI3KWljy4XoyAtxhfbCaISjnOD6REp8LQxSI75hnmEhz7lfRInlZZfoO0MnmSL2hawY4v6sElbZq_AB4g"
+                />
+              </div>
+              <div class="flex items-center gap-4 mb-3">
+                <span
+                  class="text-xs font-label text-primary uppercase font-bold"
+                  >Development</span
+                >
+                <span class="text-xs font-label text-on-surface-variant"
+                  >Sep 28, 2024</span
+                >
+              </div>
+              <h4
+                class="text-2xl font-black font-headline group-hover:text-primary transition-colors mb-3 leading-tight"
+              >
+                The Modern PHP Developer: Mastering Laravel 11
+              </h4>
+              <p class="text-on-surface-variant text-sm line-clamp-3">
+                Why Laravel remains the powerhouse of rapid web application
+                development in 2024...
+              </p>
+            </article>
+            <!-- Post 3 -->
+            <article class="group cursor-pointer">
+              <div
+                class="aspect-[4/3] rounded-3xl overflow-hidden mb-6 bg-surface-container-high border border-outline-variant/10"
+              >
+                <img
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 grayscale hover:grayscale-0"
+                  data-alt="Digital art showing glowing circuits and connected nodes in a mesh network, deep blue and electric cyan color palette"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtwnsGzUB-EWZX_L56MRFz9u9amD1T_EfJ_icEnXkVHhfnirtAS9H1ye4rGtqZpjap9uJ4uIlL1drmeFfLcwn9ctIIf8zaQWlxzfFU81x38hLYq4o4Pd3WSL1smNcBFwHnq4H7ZRvv0vkHR_FXw7E3h38xv_LFeI3M-DbtrnXOSuth4Y5vI4rmwUWHPW8YidrKE7t7X5AHnODHVcqDcBJHHy7JYPxE9gnU_ui7fCEZjvMTyUytWX2S_XMRaXpz6mkqyihEF2XjX4er"
+                />
+              </div>
+              <div class="flex items-center gap-4 mb-3">
+                <span
+                  class="text-xs font-label text-primary uppercase font-bold"
+                  >UI/UX</span
+                >
+                <span class="text-xs font-label text-on-surface-variant"
+                  >Aug 15, 2024</span
+                >
+              </div>
+              <h4
+                class="text-2xl font-black font-headline group-hover:text-primary transition-colors mb-3 leading-tight"
+              >
+                Dark Mode Design: More Than Just #000000
+              </h4>
+              <p class="text-on-surface-variant text-sm line-clamp-3">
+                Mastering the use of elevations, tonal shifts, and accessibility
+                in dark UI design...
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <!-- Gallery Section -->
+      <section class="py-32 px-6" id="gallery">
+        <div class="max-w-7xl mx-auto">
+          <div class="flex justify-between items-end mb-16">
+            <h2 class="text-4xl md:text-5xl font-black font-headline">
+              Creative Archive
+            </h2>
+            <button
+              class="flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all"
+            >
+              View All
+              <span class="material-symbols-outlined" data-icon="arrow_forward"
+                >arrow_forward</span
+              >
+            </button>
+          </div>
+          <div
+            class="grid grid-cols-2 md:grid-cols-4 gap-4 md:auto-rows-[250px]"
+          >
+            <div
+              class="md:col-span-2 md:row-span-2 overflow-hidden rounded-3xl group relative"
+            >
+              <img
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                data-alt="Abstract macro shot of computer code on a high resolution display with dramatic lighting and bokeh effect"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaSZgaia3J-EnxFsaSQAdQm9BQ6zJTSSz2_TnXPq8vf_XBQqXMtt3w1ktbHwKSouudJAMaYnHpeNfZIcTPJLAi2ZbN6Bu0TjBQSSDwK_doCxK6MgCFIPVv_jdC8L6ov8CLWOdIqYrDDUKuPUJ-zl3p-mh25Ao-r-Y77SANEJD36VZDMdrnHlKn6iWNm1a2wYk182YJeconE46nJSMNUO20Gyx9lS6U9w6aGv_xeymDvZ5Z2s0w60H5Ozr__8KB-yEF_le5-1GdfPab"
+              />
+              <div
+                class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6"
+              >
+                <span class="text-white font-bold">Digital Patterns I</span>
+              </div>
+            </div>
+            <div
+              class="md:col-span-1 md:row-span-1 overflow-hidden rounded-3xl group relative"
+            >
+              <img
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                data-alt="Close up of a sleek server room with glowing green and blue lights reflecting on dark metallic surfaces"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDX0KYaTtsS62ORsVQO9xlm2eC2jXhwIzJRKzIRhA3SNwdoG4lxZfMQI_Hcr3hcOyyCR6TPI414A8bHYbupBGZyGnjd-xFR7ZN-YyHcUkIECZ9wyqbWU2xCxbAbUIHB2MnHI1-o3N2RJ_V1mZOBbofhP-c_Tr01xumAodBIdEM0djwbAaq8Nx-jTI8J4na79BVs4SFnjoMF-HiEvhOkJXwinsUpykF8IX_fKBKkMW0ZgwdeXlFZTsBUEjoi8dNu5OjB14_p0nHS33Ao"
+              />
+            </div>
+            <div
+              class="md:col-span-1 md:row-span-2 overflow-hidden rounded-3xl group relative"
+            >
+              <img
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                data-alt="Minimalist desk setup with an open laptop, a coffee mug, and soft natural lighting from a nearby window"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJOdoJCvQ422eZzPYitxVS-i49iKaTXY7hK_OSwn-xJSxUILGujzgGCphvHq-cMwfEC81VkBYG--eGUq_NUv48mhQ7Kp_ilgvw-bxplA1uVwK7fGu3pq0sBTqXXZ-r7eGqUvBXd_q0ftfyaVWcRuOzYtOnByJ1GKycOtA5zhpBFZfDUUEyJHIMR1LME9ruavYs2ZmfN-oBpuv-4eMuT-zxaSOkKtAmdulrfBR-jhRqT0o2Yfdfsyt5wF65_Wc6jbo_jAzipOt5Hppz"
+              />
+            </div>
+            <div
+              class="md:col-span-1 md:row-span-1 overflow-hidden rounded-3xl group relative"
+            >
+              <img
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                data-alt="Candid photograph of a young man intensely focused while working on code in a dimly lit modern office space"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqNNDuIN_he_eTteKKIJi0DVnOMbyXOOI5pShdOnc6XporX0_1Y7p8x8ePhCM0_-ae8u_RGNyUC-i0M5rCDtTW9vIvw7LCzX_aDj7I97OfpfojSYzH6jiIJ6PRSL1j4tWsTMZk8KhDPnrwoGGn5UPA8TjwhzGCNmpteGhBuNkYbIjtc1-hrgr4w5vZedn0kwv0UQF1aYxh8PlIn4_-x4i9kR3moJc9vgI_bJeVVnuP1lk6UbCqTo5bV-Pj4X0b1NeaYZCimKoOdLZA"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Contact Section -->
+      <section class="py-32 px-6 relative overflow-hidden" id="contact">
+        <div class="max-w-4xl mx-auto relative z-10">
+          <div
+            class="glass-card rounded-[3rem] p-12 md:p-20 border border-outline-variant/10 shadow-2xl"
+          >
+            <div class="text-center mb-16">
+              <h2 class="text-4xl md:text-6xl font-black font-headline mb-6">
+                Let's build something
+                <span class="text-primary italic">extraordinary.</span>
+              </h2>
+              <p class="text-on-surface-variant">
+                Available for collaborations, projects, or just a coffee chat.
+              </p>
+            </div>
+            <form class="space-y-6">
+              <div class="grid md:grid-cols-2 gap-6">
+                <div class="space-y-2">
+                  <label class="text-sm font-label text-on-surface-variant px-1"
+                    >Full Name</label
+                  >
+                  <input
+                    class="w-full bg-surface-container-lowest border-none rounded-2xl px-6 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-outline/50"
+                    placeholder="John Doe"
+                    type="text"
+                  />
+                </div>
+                <div class="space-y-2">
+                  <label class="text-sm font-label text-on-surface-variant px-1"
+                    >Email Address</label
+                  >
+                  <input
+                    class="w-full bg-surface-container-lowest border-none rounded-2xl px-6 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-outline/50"
+                    placeholder="john@example.com"
+                    type="email"
+                  />
+                </div>
+              </div>
+              <div class="space-y-2">
+                <label class="text-sm font-label text-on-surface-variant px-1"
+                  >Subject</label
+                >
+                <select
+                  class="w-full bg-surface-container-lowest border-none rounded-2xl px-6 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 transition-all"
+                >
+                  <option>Project Inquiry</option>
+                  <option>Hiring / Career</option>
+                  <option>Collaboration</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="space-y-2">
+                <label class="text-sm font-label text-on-surface-variant px-1"
+                  >Message</label
+                >
+                <textarea
+                  class="w-full bg-surface-container-lowest border-none rounded-2xl px-6 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-outline/50 resize-none"
+                  placeholder="Tell me about your vision..."
+                  rows="5"
+                ></textarea>
+              </div>
+              <button
+                class="w-full py-5 bg-gradient-to-r from-primary to-secondary rounded-2xl text-on-primary font-black text-xl hover:shadow-[0_0_40px_rgba(161,250,255,0.4)] transition-all duration-500 transform active:scale-95"
+                type="submit"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+        <!-- Decorative Background Element -->
+        <div
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-[radial-gradient(circle_at_center,rgba(0,245,255,0.05)_0%,transparent_70%)] -z-10"
+        ></div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800/50 py-12 px-8">
+      <div
+        class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto gap-8"
+      >
+        <div class="flex flex-col gap-2 items-center md:items-start">
+          <div class="text-lg font-bold text-slate-200">RY.</div>
+          <p class="text-slate-500 font-inter text-sm tracking-wide">
+            © 2024 Rifki Yuliandra. Built with Tech-Noir precision.
+          </p>
+        </div>
+        <div class="flex gap-8">
+          <a
+            class="text-slate-500 hover:text-cyan-400 transition-colors transform hover:translate-y-[-2px] duration-300 flex items-center gap-2 font-label text-sm"
+            href="#"
+            >GitHub</a
+          >
+          <a
+            class="text-slate-500 hover:text-cyan-400 transition-colors transform hover:translate-y-[-2px] duration-300 flex items-center gap-2 font-label text-sm"
+            href="#"
+            >LinkedIn</a
+          >
+          <a
+            class="text-slate-500 hover:text-cyan-400 transition-colors transform hover:translate-y-[-2px] duration-300 flex items-center gap-2 font-label text-sm"
+            href="#"
+            >Twitter</a
+          >
+          <a
+            class="text-slate-500 hover:text-cyan-400 transition-colors transform hover:translate-y-[-2px] duration-300 flex items-center gap-2 font-label text-sm"
+            href="#"
+            >Email</a
+          >
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
